@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page - Quantum Nexus Labs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6e9ef;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .profile-container {
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            margin: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+
+        .profile-container h1 {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #007bff;
+        }
+
+        .profile-container h2 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .profile-container p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .profile-container .email {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .profile-container .location {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        .bio {
+            text-align: left;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+
+        .bio h3 {
+            font-size: 22px;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .bio p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 28px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .gallery {
+            margin-top: 30px;
+        }
+
+        .gallery h3 {
+            font-size: 22px;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .gallery .item {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin: 5px;
+            border: 2px solid #ddd;
+            transition: transform 0.3s, border 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery .item:hover {
+            transform: scale(1.1);
+            border: 2px solid #007bff;
+        }
+
+        .contact-button {
+            margin-top: 30px;
+        }
+
+        .contact-button button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact-button button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .useful-links {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .useful-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .useful-links a:hover {
+            color: #0056b3;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-container, .bio, .social-links, .gallery, .contact-button, .nav-menu, .useful-links {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Hidden initially */
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar h3 {
+            color: #007bff;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .sidebar a:hover {
+            color: #0056b3;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-toggle:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle">Menu</button>
+    <div class="sidebar">
+        <h3>Menu</h3>
+        <a href="menu.html">"Empower Your Vision: Inspire, Innovate, Achieve with Quantum Nexus Labs"</a>
+        <a href="naviguer.html">"Unlock Your Potential: Skills Development and Success Stories"</a>
+        <a href="#">Link 3</a>
+        <a href="#">Link 4</a>
+    </div>
+
+    <div class="profile-container">
+        <a href="https://ibb.co/KrjzrWQ">
+            <img src="https://i.ibb.co/MCD5C7j/Photo-1722032180127.png" alt="Profile Picture" border="0">
+        </a>
+        <h1>Quantum Nexus Labs International Technological Society</h1>
+        <h2>Formerly Med Rayen Bouazizi</h2>
+        <div class="location">Location: Online</div>
+        <p>Email: <a href="mailto:rayenbouazizi336@gmail.com" class="email">rayenbouazizi336@gmail.com</a></p>
+
+        <!-- Biographie -->
+        <div class="bio">
+            <h3>About Us</h3>
+            <p>
+                Our site specializes in constructing websites and web applications according to our clients' desires. Contact us easily at the following email: <a href="mailto:rayenbouazizi336@gmail.com" class="email">rayenbouazizi336@gmail.com</a>. Our team is also specialized in research in the field of Artificial Intelligence and in selling products such as websites created for sale at competitive prices. Med Rayen Bouazizi was formerly associated with Quantum Nexus Labs.
+            </p>
+        </div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <!-- Bouton de Contact -->
+        <div class="contact-button">
+            <button onclick="window.location.href='mailto:rayenbouazizi336@gmail.com';">Contact Us</button>
+        </div>
+
+        <!-- Menu de Navigation -->
+        <div class="nav-menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <!-- Liens Utiles -->
+        <div class="useful-links">
+            <h3>Useful Links</h3>
+            <a href="https://rayen59.github.io/olympiade-math30.com/" target="_blank">Official Support Site</a>
+            <a href="https://rayen59.github.io/olympiade-math30.com/" target="_blank">First Discoveries</a>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h3>Testimonials</h3>
+            <p>
+                "Quantum Nexus Labs has been a game-changer for our business. Their innovative solutions have significantly boosted our productivity and efficiency." - Client A
+            </p>
+            <p>
+                "The team's expertise and dedication to quality are unmatched. We are extremely satisfied with the results of our collaboration." - Client B
+            </p>
+        </div>
+    </div>
+    <!-- Script for FontAwesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        document.querySelector('.sidebar-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

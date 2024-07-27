@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empower Your Ideas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f2f2f2, #d9eaff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .animation-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 123, 255, 0.1);
+            animation: expand 10s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        @keyframes expand {
+            0% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class="container">
+        <h1>Empower Your Ideas</h1>
+        <h2>Inspire. Innovate. Achieve.</h2>
+        <p>
+            Welcome to a realm where imagination meets action and dreams evolve into groundbreaking realities. At Quantum Nexus Labs, we are fueled by the belief that every great innovation starts with a spark of creativity and a courageous leap of faith. We are here to guide and support young visionaries like you as you embark on your journey to transform your brilliant ideas into revolutionary tech solutions.
+        </p>
+        <p>
+            Embrace the challenge, seize the opportunity, and let your passion ignite the path to success. Our dedicated team is ready to help you harness your creativity and take your tech projects from concept to completion. Whether you’re aspiring to create cutting-edge software, develop groundbreaking applications, or launch the next big tech startup, we are here to empower you every step of the way.
+        </p>
+        <p>
+            Reach out to us today and turn your dreams into reality. Together, we can build the future and make a lasting impact in the world of technology. Your journey begins now—let's make it extraordinary!
+        </p>
+        <a href="mailto:rayenbouazizi336@gmail.com" class="cta-button">Contact Us</a>
+    </div>
+</body>
+</html>
